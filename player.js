@@ -9,7 +9,8 @@ document.getElementsByTagName("head")[0].appendChild(script);
 let link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href = "style.css";
+link.href =
+  "https://guidedlearning.oracle.com/player/latest/static/css/stTip.css";
 document.head.appendChild(link);
 
 // Import attched JSONP endpoint
