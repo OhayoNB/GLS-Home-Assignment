@@ -48,3 +48,23 @@ const displayTooltip = (content, id) => {
     </div>`;
   return html;
 };
+
+// Close tooltips with button on each tooltip
+const closeToolTip = (id) => {
+  if (id == 1) {
+    $("#close_1").css({ visibility: "hidden" });
+  }
+  if (id == 3) {
+    $("#close_3").css({ visibility: "hidden" });
+  }
+  if (id == 4) {
+    $("#close_4").css({ visibility: "hidden" });
+  }
+  if (id == 5) {
+    $("#close_5").css({ visibility: "hidden" });
+  }
+};
+
+// JSONP endpoint URL
+const url =
+  "https://guidedlearning.oracle.com/player/latest/api/scenario/get/v_IlPvRLRWObwLnV5sTOaw/5szm2kaj/?callback=__5szm2kaj&refresh=true&env=dev&type=startPanel&vars%5Btype%5D=startPanel&sid=none&_=1582203987867";
