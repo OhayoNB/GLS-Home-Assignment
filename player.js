@@ -68,3 +68,66 @@ const closeToolTip = (id) => {
 // JSONP endpoint URL
 const url =
   "https://guidedlearning.oracle.com/player/latest/api/scenario/get/v_IlPvRLRWObwLnV5sTOaw/5szm2kaj/?callback=__5szm2kaj&refresh=true&env=dev&type=startPanel&vars%5Btype%5D=startPanel&sid=none&_=1582203987867";
+
+function getData() {
+  // Perfoming an asynchronous HTTP request using Ajax
+  $.ajax({
+    url: url,
+    dataType: "JSONP",
+    success: (data) => {
+      const jsonData = data.data.structure.steps;
+      jsonData.forEach((step) => {
+        if (JSON.stringify(step.action.contents) === undefined) {
+          return;
+        }
+        // Transform the recieved data to a string and take the right string using split and slice methods
+        let content = JSON.stringify(step.action.contents)
+          .split(":")[1]
+          .slice(0, -4)
+          .slice(1);
+
+        // Take the right content and built HTML template for it, then append it to the HTML body tag
+        const html = displayTooltip(content, step.id);
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        const body = document.body;
+        body.append(div);
+
+        // Positioning the right messages in the right places on the page using css properties
+        if (content.includes("Welcome")) {
+          $(`#x_${step.id}`).css({
+            display: "block",
+            right: 1000,
+            top: 155,
+          });
+        }
+
+        if (content.includes("Images")) {
+          $(`#x_${step.id}`).css({
+            display: "block",
+            right: 330,
+            top: 60,
+          });
+        }
+
+        if (content.includes("ENTER")) {
+          $(`#x_${step.id}`).css({
+            display: "block",
+            right: 520,
+            top: 345,
+          });
+        }
+
+        if (content.includes("to search")) {
+          $(`#x_${step.id}`).css({
+            display: "block",
+            right: 1320,
+            top: 440,
+          });
+        }
+      });
+    },
+  });
+}
+
+getData();
