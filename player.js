@@ -32,3 +32,19 @@ const importCSS = () => {
 };
 
 importCSS();
+
+// Build the tooltip template with the specific id and content
+const displayTooltip = (content, id) => {
+  let html = `<div class="sttip" id="x_${id}" style="position: absolute;">
+  <button class="close""></button>
+         <div class="tooltip in">
+          <div class="tooltip-arrow"></div>
+          <div class="tooltip-arrow second-arrow"></div>
+          <div class="popover-inner" id="close_${id}" style="background-color: aliceblue; padding: 20px; opacity: 0.7; font-size: 17px;">
+                   ${content}
+                   <button  onClick="closeToolTip(${id})" style="width: 50px; height: 30px; float: right; background-color: white; border-radius: 4px; text-align: center;">Close</button>
+              </div>
+        </div>
+    </div>`;
+  return html;
+};
