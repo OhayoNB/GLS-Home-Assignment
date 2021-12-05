@@ -51,18 +51,7 @@ const displayTooltip = (content, id) => {
 
 // Close tooltips with button on each tooltip
 const closeToolTip = (id) => {
-  if (id == 1) {
-    $("#close_1").css({ visibility: "hidden" });
-  }
-  if (id == 3) {
-    $("#close_3").css({ visibility: "hidden" });
-  }
-  if (id == 4) {
-    $("#close_4").css({ visibility: "hidden" });
-  }
-  if (id == 5) {
-    $("#close_5").css({ visibility: "hidden" });
-  }
+  $("#close_" + id).css({ visibility: "hidden" });
 };
 
 // JSONP endpoint URL
